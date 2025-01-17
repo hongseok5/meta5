@@ -1,0 +1,32 @@
+type Query {
+    allWords: [Word]
+    wordById(id: ID!): Word
+}
+
+type Mutation {
+    createWord(input: WordInput): Word
+    updateWord(id: ID!, name: String, email: String): Word
+    deleteWord(id: ID!): Boolean
+}
+
+type User {
+    id: ID
+    name: String
+    email: String
+}
+
+type Word {
+    wordEngName: String
+    wordName: String
+    wordEngFullName: String
+    wordType: String
+    domainName: String
+}
+
+input WordInput {
+    wordEngName: String
+    wordName: String
+    wordEngFullName: String
+    wordType: String
+    domainName: String
+}
