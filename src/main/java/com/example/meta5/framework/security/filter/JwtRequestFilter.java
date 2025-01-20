@@ -67,7 +67,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         String path = request.getRequestURI();
-        String[] excludedPaths = { "/user/signin", "/user/signup", "/swagger-ui", "/v3/api-docs" };
+        String[] excludedPaths = { "/user/signin", "/user/signup", "/api", "/swagger-ui", "/v3/api-docs" };
         // /public/* 경로는 필터링하지 않음
         // SecurityConfig에서 AUth 허용해도 이게 있어야함
         // 프론트에서 헤더가 있어야 함
