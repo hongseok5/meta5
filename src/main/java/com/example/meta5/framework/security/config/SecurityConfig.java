@@ -4,6 +4,7 @@ import com.example.meta5.config.WebMvcConfig;
 import com.example.meta5.framework.security.filter.CustomUsernamePasswordAuthenticationFilter;
 import com.example.meta5.framework.security.filter.JwtRequestFilter;
 import com.example.meta5.framework.security.service.CustomUserDetailsService;
+import com.example.meta5.framework.security.util.CustomAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +37,7 @@ public class SecurityConfig {
                         authorizeRequests
                                     .requestMatchers("/user/signup", "/user/signin", "/swagger-ui/**" ,"/v3/**",  "/swagger-resources/**", "/webjars/**", "/api/**").permitAll() // 회원가입, 로그인에 대한 접근 허용
                                 .anyRequest().authenticated() // 그 외의 모든 요청은 인증을 요구
-                )
+                ).exceptionHandling(handling -> handling.authenticationEntryPoint(new CustomAuthenticationEntryPoint()))
 //                .httpBasic(withDefaults()) // HTTP Basic 인증 활성화 -> 주로 간단한 테스트를 위해 사용됨. JWT토큰 인증을 사용하면 없어도 됨
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class) // JWT 필터 추가, UsernamePassword 필터 앞에서 수행됨.
                 .csrf(csrf -> csrf.disable());

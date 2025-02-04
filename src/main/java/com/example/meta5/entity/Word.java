@@ -19,7 +19,7 @@ public class Word {
 
     private String wordType;
 
-    private String domainName;
+        private String domainName;
 
 
 }

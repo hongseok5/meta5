@@ -22,4 +22,9 @@ public class DomainService {
         Page<DomainInfo> domainList = repository.findAll(PageRequest.of(page, size));
         return new GenericPagingResponse<>(domainList);
     }
+
+    public DomainInfo newDomain(DomainInfo info){
+        DomainInfo domain = repository.save(info);
+        return domain;
+    }
 }

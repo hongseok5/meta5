@@ -1,6 +1,7 @@
 package com.example.meta5.controller;
 
 import com.example.meta5.dto.LoginRequest;
+import com.example.meta5.dto.WordInput;
 import com.example.meta5.entity.User;
 import com.example.meta5.entity.Word;
 import com.example.meta5.framework.common.GenericPagingResponse;
@@ -35,22 +36,24 @@ public class WordController {
 
     }
     @SuppressWarnings("unused")
-    @QueryMapping
+    @MutationMapping
+    public Word createWord(@Argument WordInput input) {
+        // 변수명도 맞춰줘야 한다.
+        return wordService.save(input);
+    }
+
+    @QueryMapping(name = "allWords")
+    @SuppressWarnings("unused")
     public List<Word> allWords(){
 
         try{
-
+e
             return wordService.findAll();
         } catch(Exception e){
+            log.error("", e);
             return null;
         }
 
-    }
-    @SuppressWarnings("unused")
-    @MutationMapping
-    public Word createWord(@Argument Word word) {
-
-        return wordService.save(word);
     }
 
 }

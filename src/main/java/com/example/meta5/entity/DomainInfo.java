@@ -7,6 +7,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Getter
 @Setter
@@ -31,4 +33,13 @@ public class DomainInfo {
 
     @Column(name = "REMARK", nullable = true)
     private String remark;
+
+    @Override
+    public boolean equals(Object domainInfo){
+        if(this == domainInfo) return true;
+        if (domainInfo == null || getClass() != domainInfo.getClass()) return false;
+        DomainInfo that = (DomainInfo) domainInfo;
+        return Objects.equals(domainName , that.domainName);
+
+    }
 }
