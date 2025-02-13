@@ -1,5 +1,6 @@
 package com.example.meta5.dto;
 
+import com.example.meta5.entity.DomainInfo;
 import com.example.meta5.entity.Word;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +20,9 @@ public class WordInput {
         word.setWordEngName(this.wordEngName);
         word.setWordType(this.wordType);
         word.setWordEngFullName(this.wordEngFullName);
-        word.setDomainName(this.domainName);
+        DomainInfo domain = new DomainInfo();
+        domain.setDomainName(domainName);
+        word.setDomainInfo(domain);
         return word;
     }
 }

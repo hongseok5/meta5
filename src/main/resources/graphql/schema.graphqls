@@ -5,7 +5,7 @@ type Query {
 
 type Mutation {
     createWord(input: WordInput!): Word
-    updateWord(id: ID!, name: String, email: String): Word
+    updateWord(id: ID!, input: WordInput!): Word
     deleteWord(id: ID!): Boolean
 }
 

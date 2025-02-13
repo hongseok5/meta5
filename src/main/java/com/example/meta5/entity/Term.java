@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -20,9 +23,6 @@ public class Term {
     @JoinColumn(name="domainName")
     private DomainInfo domainInfo;
 
-    @Column(name="DATA_TYPE")
-    private String dataType;
-
-    //@Column(name="DATA_LENGTH")
-    //private String dataLength;
+    @OneToMany(mappedBy = "term", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TermWordInfo> termWordInfos;
 }

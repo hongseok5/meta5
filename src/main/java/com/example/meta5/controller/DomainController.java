@@ -40,12 +40,27 @@ public class DomainController {
 
     @PostMapping
     public DomainInfo newDomain(@RequestBody DomainInfo domainInfo){
-        //Map result = new HashMap<String, String>();
 
         try{
             return domainService.newDomain(domainInfo);
         } catch (Exception e){
             return new DomainInfo();
         }
+    }
+
+    @PutMapping
+    public DomainInfo editDomain(@RequestBody DomainInfo domainInfo){
+
+        try{
+            return domainService.editDomain(domainInfo);
+        } catch (Exception e){
+            return new DomainInfo();
+        }
+    }
+
+    @DeleteMapping
+    public boolean deleteDomain(@RequestBody DomainInfo domainInfo){
+
+        return domainService.deleteDomain(domainInfo);
     }
 }

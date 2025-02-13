@@ -41,19 +41,30 @@ public class WordController {
         // 변수명도 맞춰줘야 한다.
         return wordService.save(input);
     }
+    @SuppressWarnings("unused")
+    @MutationMapping
+    public Word updateWord(@Argument String id, @Argument WordInput input) {
+
+        return wordService.updateWord( input);
+    }
+
+    @SuppressWarnings("unused")
+    @MutationMapping
+    public boolean deleteWord(@Argument String id) {
+
+        return wordService.deleteWord( id);
+    }
 
     @QueryMapping(name = "allWords")
     @SuppressWarnings("unused")
     public List<Word> allWords(){
 
         try{
-e
             return wordService.findAll();
         } catch(Exception e){
             log.error("", e);
             return null;
         }
-
     }
 
 }

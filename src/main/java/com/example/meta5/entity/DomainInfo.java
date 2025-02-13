@@ -9,6 +9,10 @@ import lombok.Setter;
 
 import java.util.Objects;
 
+/**
+ * 도메인을 단어에 매핑시키는가 용어에 매핑시키는가?
+ * 통합코드는 단어에 개별코드는 용어에?
+ */
 @Entity
 @Getter
 @Setter
